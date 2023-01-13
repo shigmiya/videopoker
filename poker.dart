@@ -64,7 +64,8 @@ Ranking getHandRanking(Hand hand) {
   }
 
   // Straight.
-  if (faces.last.value - faces.first.value == 5) {
+  if (faces.last.value - faces.first.value == 4 ||
+      (faces[3].value - faces[0].value == 3 && faces[4] == Face.ACE)) {
     rankings.add(Ranking.straight);
   }
 
@@ -101,15 +102,17 @@ Ranking getHandRanking(Hand hand) {
   }
 
   // Straight flush.
-  if (faces.last.value - faces.first.value == 5 &&
+  if ((faces.last.value - faces.first.value == 4 ||
+          (faces[3].value - faces[0].value == 3 && faces[4] == Face.ACE)) &&
       suitCounts.values.any((count) => count == 5)) {
     rankings.add(Ranking.straightFlush);
   }
 
   // Royal flush.
-  if (faces.last.value - faces.first.value == 5 &&
-      suitCounts.values.any((count) => count == 5 && faces.last.value == 12)) {
-    rankings.add(Ranking.straightFlush);
+  if (faces.last.value - faces.first.value == 4 &&
+      faces.last.value == 12 &&
+      suitCounts.values.any((count) => count == 5)) {
+    rankings.add(Ranking.royalFlush);
   }
 
   rankings.sort((a, b) => a.score.compareTo(b.score));
