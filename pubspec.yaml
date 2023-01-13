@@ -1,0 +1,14 @@
+name: poker
+description: >-
+  video poker
+version: 1.0.0
+homepage: https://example-pet-store.com/newtify
+documentation: https://example-pet-store.com/newtify/docs
+
+environment:
+  sdk: '>=2.17.0 <3.0.0'
+  
+dependencies:
+  
+dev_dependencies:
+  test: ^1.5.1
